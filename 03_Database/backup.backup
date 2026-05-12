@@ -1,0 +1,8 @@
+
+SIMULACIÓN DE BACKUP
+
+En un entorno real este archivo sería generado usando:
+
+pg_dump -U postgres -d sigr -F c -f backup.backup
+
+Este archivo se incluye como evidencia de línea base.
