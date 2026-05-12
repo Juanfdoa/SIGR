@@ -1,0 +1,38 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build
+bin/
+obj/
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# .NET
+bin/
+obj/
+
+# React
+node_modules/
+build/
+
+# Environment
+.env
+
+# Logs
+logs/
+*.log
