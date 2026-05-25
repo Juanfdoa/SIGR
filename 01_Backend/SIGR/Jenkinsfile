@@ -25,6 +25,14 @@ pipeline {
             }
         }
 
+        stage('Build Tests') {
+            steps {
+                dir('01_Backend') {
+                    bat 'dotnet build SIGR.Tests/SIGR.Tests.csproj --configuration Release'
+                }
+            }
+        }
+
         stage('Test') {
             steps {
                 dir('01_Backend') {
