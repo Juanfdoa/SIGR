@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('01_Backend/SIGR') {
-                    bat 'dotnet test --no-build'
+                   bat 'dotnet test SIGR.Tests/SIGR.Tests.csproj --configuration Release --no-build'
                 }
             }
         }
