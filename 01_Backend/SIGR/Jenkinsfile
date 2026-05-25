@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Restore') {
+            steps {
+                dir('01_Backend/SIGR') {
+                    bat 'dotnet restore'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('01_Backend/SIGR') {
+                    bat 'dotnet build --configuration Release'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('01_Backend/SIGR') {
+                    bat 'dotnet test --no-build'
+                }
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                dir('01_Backend/SIGR') {
+                    bat 'dotnet publish -c Release -o publish'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build OK'
+        }
+        failure {
+            echo 'Build FAILED'
+        }
+    }
+}
