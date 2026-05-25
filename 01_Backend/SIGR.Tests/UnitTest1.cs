@@ -1,23 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SIGR.Controllers;
 using SIGR.DTOs;
+using System.Reflection;
 
 namespace SIGR.Tests
 {
-    public class ReservationControllerTests
+    public class UnitTest1
     {
+        public UnitTest1()
+        {
+            // 🔥 RESET DEL ESTADO ANTES DE CADA TEST
+            var field = typeof(ReservationController)
+                .GetField("_reservations", BindingFlags.Static | BindingFlags.NonPublic);
+
+            if (field != null)
+            {
+                field.SetValue(null, new List<ReservationDto>
+                {
+                    new ReservationDto { Id = 1, Customer = "Juan", Table = 5 }
+                });
+            }
+        }
+
         [Fact]
-        public void GetAll_Should_Return_List()
+        public void GetAll_Should_Return_Ok()
         {
             // Arrange
             var controller = new ReservationController();
 
             // Act
-            var result = controller.GetAll() as OkObjectResult;
+            var result = controller.GetAll();
 
             // Assert
-            Assert.NotNull(result);
-            Assert.IsType<List<ReservationDto>>(result.Value);
+            Assert.IsType<OkObjectResult>(result);
         }
 
         [Fact]

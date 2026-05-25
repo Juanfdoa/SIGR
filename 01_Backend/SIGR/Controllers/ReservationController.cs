@@ -9,7 +9,8 @@ namespace SIGR.Controllers
     {
         private static List<ReservationDto> _reservations = new()
         {
-            new ReservationDto { Id = 1, Customer = "Juan", Table = 5 }
+            new ReservationDto { Id = 1, Customer = "Juan", Table = 5 },
+            new ReservationDto { Id = 2, Customer = "Acevedo", Table = 6 },
         };
 
         // GET: api/reservations
